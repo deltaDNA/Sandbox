@@ -677,8 +677,9 @@ namespace DeltaDNA
             }
             return url;
         }
-
-        internal void NotifyOnSessionConfigured(bool cached) {
+        //TODO - Unwind hack when SDK updated beyond 5.0.1
+        //HACK - accessibility restorted to public i.e. v4.13.4 functionality - DELTADNA-763 ticket added
+        public void NotifyOnSessionConfigured(bool cached) {
             if (OnSessionConfigured != null) OnSessionConfigured(cached);
         }
 
