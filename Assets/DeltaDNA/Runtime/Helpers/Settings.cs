@@ -17,8 +17,9 @@
 namespace DeltaDNA
 {
     public class Settings
-    {
-        internal static readonly string SDK_VERSION = "Unity SDK v5.0.1";
+    {   //TODO - Unwind hack when SDK updated beyond 5.0.1
+        //HACK - accessibility restorted to public i.e. v4.13.4 functionality - DELTADNA-763 ticket added
+        public static readonly string SDK_VERSION = "Unity SDK v5.0.1";
 
         internal static readonly string ENGAGE_API_VERSION = "4";
 

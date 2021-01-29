@@ -32,6 +32,7 @@ public class DDNA_Manager : MonoBehaviour
             DDNA.Instance.StartSDK();
             DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
             btnStartSDK.text = "Stop SDK";
+            Debug.Log(DDNA.Instance.ClientVersion);
         }
         else
         {
