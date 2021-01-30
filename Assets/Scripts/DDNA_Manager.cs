@@ -9,16 +9,33 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private  TMP_Text txtParams;
     [SerializeField] private TMP_Text txtValues;
     [SerializeField] private TMP_Text txtEventName;
+    [SerializeField] private UnityEngine.UI.Toggle sdkOnStart;
+
     // Start is called before the first frame update
     void Start()
     {
+        sdkOnStart.onValueChanged.AddListener(delegate {
+            ToggleValueChanged(sdkOnStart);
+        });
+
+        sdkOnStart.isOn = Preferences.GetToggleStartSDK();
+            
+        if (sdkOnStart.isOn)
+        {
+            OnStartSDKClicked();
+        }
         if (DDNA.Instance.HasStarted)
         {
             btnStartSDK.text = "Stop SDK";
         }
     }
-    
-   
+
+    public void ToggleValueChanged(UnityEngine.UI.Toggle toggle)
+    {
+        Preferences.SaveToggleStartSDK(toggle.isOn);
+    }
+
+
     public void OnStartSDKClicked()
     {
         // Default Configuration points to
@@ -60,6 +77,7 @@ public class DDNA_Manager : MonoBehaviour
         DDNA.Instance.RecordEvent(gameEvent);
     }
 
+    #region DeltaDNA Functions
     private void ConfigureDeltadnaSDK()
     {
         // Hook up callback to fire when DDNA SDK has received session config info, including Event Triggered campaigns.
@@ -143,7 +161,10 @@ public class DDNA_Manager : MonoBehaviour
         Debug.Log("Received game parameters from Engage campaign: " + DeltaDNA.MiniJSON.Json.Serialize(gameParameters));
         if (gameParameters.ContainsKey("<yourParameter>"))
         {
-           // Do something
+            // Do something
         }
     }
+    #endregion
+
+
 }
