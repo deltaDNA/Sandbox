@@ -6,12 +6,19 @@ using DeltaDNA;
 public class DDNA_Manager : MonoBehaviour
 {
     [SerializeField] private TMP_Text btnStartSDK;
-    [SerializeField] private  TMP_Text txtParams;
+    [SerializeField] private TMP_Text txtParams;
     [SerializeField] private TMP_Text txtValues;
     [SerializeField] private TMP_Text txtEventName;
+
+    private AdsManager adsManager;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
+        adsManager = GetComponent<AdsManager>();
+
         if (DDNA.Instance.HasStarted)
         {
             btnStartSDK.text = "Stop SDK";
@@ -31,8 +38,7 @@ public class DDNA_Manager : MonoBehaviour
             DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
             DDNA.Instance.StartSDK();
             DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
-            btnStartSDK.text = "Stop SDK";
-            Debug.Log(DDNA.Instance.ClientVersion);
+            btnStartSDK.text = "Stop SDK";            
         }
         else
         {
@@ -141,9 +147,9 @@ public class DDNA_Manager : MonoBehaviour
     {
         // Generic Game Parameter Handler
         Debug.Log("Received game parameters from Engage campaign: " + DeltaDNA.MiniJSON.Json.Serialize(gameParameters));
-        if (gameParameters.ContainsKey("<yourParameter>"))
+        if (gameParameters.ContainsKey("adProvider"))
         {
-           // Do something
+            adsManager.ProcessAdCommands(gameParameters);
         }
     }
 }
