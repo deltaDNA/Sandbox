@@ -54,6 +54,16 @@ public class AdsManager : MonoBehaviour
 
     private DateTime lastAdTimestamp;
     public DateTime LastAdTimestamp { get => lastAdTimestamp; set => lastAdTimestamp = value; }
+       
+
+    public int RemainingCooldownSeconds()
+    {
+        // Return the number of seconds remaining until next ad can be shown
+        DateTime nextAdTimestamp = lastAdTimestamp.AddSeconds(adCooldownSeconds);
+        double secondsRemaining = nextAdTimestamp.Subtract(DateTime.Now).TotalSeconds; 
+
+        return secondsRemaining > 0 ? Convert.ToInt32(secondsRemaining) : 0 ;           
+       } 
 
     public Ad currentAd; 
 
@@ -86,7 +96,7 @@ public class AdsManager : MonoBehaviour
                 // Economy deliver reward
                 if (currentAd.AdType == "REWARDED")
                 {
-                    // Send Reward 
+                    //TODO Send Reward 
                     // EconomyManager.PlayerReceive(rewardType,rewardValue)
                 }
                 UpdateAdState(AdState.Finished);
@@ -158,7 +168,7 @@ public class AdsManager : MonoBehaviour
 
     
         // Is it OK to show an Ad? 
-        if (AdCounter < adsPerSession && LastAdTimestamp.AddSeconds(adCooldownSeconds) < DateTime.Now)
+        if (AdCounter < adsPerSession && RemainingCooldownSeconds() == 0)
         {
             // Which Ad Provider to use
             if (currentAd.Provider == "UNITY" || currentAd.Provider == "ANY")
