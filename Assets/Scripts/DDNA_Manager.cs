@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DeltaDNA;
+using System;
+using System.IO;
+using UnityEngine.UI;
+using System.Text;
+
 public class DDNA_Manager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text btnStartSDK;
+    [SerializeField] private Button btnEvents;
+    [SerializeField] private Button btnCampaigns;
+    [SerializeField] private Button btnADS;
+    [SerializeField] private Button btnIAP;
+    [SerializeField] private TMP_Text txtStartSDK;
     [SerializeField] private  TMP_Text txtParams;
     [SerializeField] private TMP_Text txtValues;
     [SerializeField] private TMP_Text txtEventName;
-    [SerializeField] private UnityEngine.UI.Toggle sdkOnStart;
+    [SerializeField] private Toggle sdkOnStart;
 
-    // Start is called before the first frame update
+
+
+     // Start is called before the first frame update
     void Start()
     {
+        //listener on startSDK toggle
         sdkOnStart.onValueChanged.AddListener(delegate {
             ToggleValueChanged(sdkOnStart);
         });
@@ -22,60 +34,84 @@ public class DDNA_Manager : MonoBehaviour
             
         if (sdkOnStart.isOn)
         {
+            //simulate a click
             OnStartSDKClicked();
         }
-        if (DDNA.Instance.HasStarted)
+     
+        HandleUIForSDK(DDNA.Instance.HasStarted);
+      
+    }
+
+    private void HandleUIForSDK(bool hasStarted)
+    {
+        if (hasStarted)
         {
-            btnStartSDK.text = "Stop SDK";
+            txtStartSDK.text = "Stop SDK";
         }
+        else
+        {
+            txtStartSDK.text = "Start SDK";
+        }
+        btnEvents.interactable = hasStarted;
+        btnCampaigns.interactable = hasStarted;
+        btnIAP.interactable = hasStarted;
+        btnADS.interactable = hasStarted;
     }
 
     public void ToggleValueChanged(UnityEngine.UI.Toggle toggle)
     {
         Preferences.SaveToggleStartSDK(toggle.isOn);
     }
-
-
     public void OnStartSDKClicked()
     {
         // Default Configuration points to
         // https://www.deltadna.net/demo-account/sandbox/dev 
         //TODO check config use config instead of UI CONFIG
-        if (btnStartSDK.text.StartsWith("Start"))
+        if (txtStartSDK.text.StartsWith("Start"))
         {
             ConfigureDeltadnaSDK();
 
             DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
             DDNA.Instance.StartSDK();
             DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
-            btnStartSDK.text = "Stop SDK";
+            HandleUIForSDK(DDNA.Instance.HasStarted);
             Debug.Log(DDNA.Instance.ClientVersion);
         }
         else
         {
             DDNA.Instance.StopSDK();
-            btnStartSDK.text = "Start SDK";
+            HandleUIForSDK(false);
         }
         
 
     }
     public void OnRecordEventClick()
-    { 
+    {
         string[] parameters;
         string[] values;
         parameters = txtParams.text.Split(';');
         values = txtValues.text.Split(';');
         GameEvent gameEvent = null;
+        string eventName = txtEventName.text.ToString().Trim();
 
-        for (int i = 0; i < parameters.Length-1; i++)
+        for (int i = 0; i <= parameters.Length - 1; i++)
         {
-            if(i==0)
-                gameEvent = new GameEvent(txtEventName.text);
+            if (i == 0)
+            {
+                var utf8 = Encoding.UTF8;
+                byte[] utfBytes = utf8.GetBytes(eventName);
+                eventName = utf8.GetString(utfBytes, 0, utfBytes.Length);
+                gameEvent = new GameEvent(eventName);
+            }
+                
             gameEvent.AddParam(parameters[i], values[i]);
         }
-          
-        DDNA.Instance.RecordEvent(gameEvent);
+
+        if(gameEvent != null)
+            DDNA.Instance.RecordEvent(gameEvent);
     }
+
+
 
     #region DeltaDNA Functions
     private void ConfigureDeltadnaSDK()
