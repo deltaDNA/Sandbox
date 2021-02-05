@@ -15,9 +15,12 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private Button btnADS;
     [SerializeField] private Button btnIAP;
     [SerializeField] private TMP_Text txtStartSDK;
-    [SerializeField] private  TMP_Text txtParams;
-    [SerializeField] private TMP_Text txtValues;
-    [SerializeField] private TMP_Text txtEventName;
+    //[SerializeField] private  TMP_Text txtParams; //Issue when trying to get text from TMP :(
+    //[SerializeField] private TMP_Text txtValues;
+    //[SerializeField] private TMP_Text txtEventName;
+    [SerializeField] private Text txtEvenName;
+    [SerializeField] private Text txtParams;
+    [SerializeField] private Text txtValues;
     [SerializeField] private Toggle sdkOnStart;
 
 
@@ -92,23 +95,34 @@ public class DDNA_Manager : MonoBehaviour
         parameters = txtParams.text.Split(';');
         values = txtValues.text.Split(';');
         GameEvent gameEvent = null;
-        string eventName = txtEventName.text.ToString().Trim();
+        String eventName = txtEvenName.text.ToString().Trim();
 
-        for (int i = 0; i <= parameters.Length - 1; i++)
-        {
-            if (i == 0)
+        //if(2==1)
+        //{
+        //    gameEvent = new GameEvent("missionStarted")
+        //        .AddParam("missionName", "Mission1");
+        //    DDNA.Instance.RecordEvent(gameEvent);
+
+        //}
+        //else //not working
+        //{
+            for (int i = 0; i <= parameters.Length - 1; i++)
             {
-                var utf8 = Encoding.UTF8;
-                byte[] utfBytes = utf8.GetBytes(eventName);
-                eventName = utf8.GetString(utfBytes, 0, utfBytes.Length);
-                gameEvent = new GameEvent(eventName);
-            }
-                
-            gameEvent.AddParam(parameters[i], values[i]);
-        }
+                if (i == 0)
+                {
+                    //var utf8 = Encoding.Unicode;
+                    //byte[] utfBytes = utf8.GetBytes(eventName);
+                    //eventName = utf8.GetString(utfBytes, 0, utfBytes.Length);
+                    gameEvent = new GameEvent(eventName);
+                }
 
-        if(gameEvent != null)
-            DDNA.Instance.RecordEvent(gameEvent);
+                gameEvent.AddParam(parameters[i], values[i]);
+            }
+
+            if (gameEvent != null)
+                DDNA.Instance.RecordEvent(gameEvent);
+        //}
+ 
     }
 
 
