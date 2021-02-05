@@ -19,20 +19,21 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private TMP_Text txtValues;
     [SerializeField] private TMP_Text txtEventName;
     [SerializeField] private Toggle sdkOnStart;
+    private AdsManager adsManager;
 
-
-
-     // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
-        //listener on startSDK toggle
+        
+          //listener on startSDK toggle
         sdkOnStart.onValueChanged.AddListener(delegate {
             ToggleValueChanged(sdkOnStart);
         });
 
         sdkOnStart.isOn = Preferences.GetToggleStartSDK();
-            
-        if (sdkOnStart.isOn)
+
+        adsManager = GetComponent<AdsManager>();
+        if (DDNA.Instance.HasStarted)
         {
             //simulate a click
             OnStartSDKClicked();
@@ -74,8 +75,10 @@ public class DDNA_Manager : MonoBehaviour
             DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
             DDNA.Instance.StartSDK();
             DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
+
             HandleUIForSDK(DDNA.Instance.HasStarted);
             Debug.Log(DDNA.Instance.ClientVersion);
+            btnStartSDK.text = "Stop SDK";            
         }
         else
         {
@@ -195,9 +198,8 @@ public class DDNA_Manager : MonoBehaviour
     {
         // Generic Game Parameter Handler
         Debug.Log("Received game parameters from Engage campaign: " + DeltaDNA.MiniJSON.Json.Serialize(gameParameters));
-        if (gameParameters.ContainsKey("<yourParameter>"))
-        {
-            // Do something
+        if (gameParameters.ContainsKey("adProvider"))
+            adsManager.ProcessAdCommands(gameParameters);
         }
     }
     #endregion
