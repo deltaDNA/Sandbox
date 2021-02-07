@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"161118dc-8ab5-49d9-84f6-17cab82a882e\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"adProvider\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"UNITY\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"94d07d49-37d8-4d10-ab1b-5a09b2a39ba0\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardType\",\r\n      \"value\": \"COINS\",\r\n     
+    \"type\": \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"cd0286a3-a187-49ad-9818-ebc2047e1f79\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardValue\",\r\n      \"value\": 250,\r\n      \"type\":
+    \"int\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"0faa5120-8d8d-4250-a411-dd38ddd8bc12\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"adPerSessionLimit\",\r\n      \"value\": 3,\r\n      \"type\": \"int\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"adCooldownSeconds\",\r\n      \"value\":
+    120,\r\n      \"type\": \"int\"\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"161118dc-8ab5-49d9-84f6-17cab82a882e\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"adProvider\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"UNITY\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"94d07d49-37d8-4d10-ab1b-5a09b2a39ba0\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardType\",\r\n      \"value\": \"COINS\",\r\n     
+    \"type\": \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"cd0286a3-a187-49ad-9818-ebc2047e1f79\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardValue\",\r\n      \"value\": 250,\r\n      \"type\":
+    \"int\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"0faa5120-8d8d-4250-a411-dd38ddd8bc12\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"adPerSessionLimit\",\r\n      \"value\": 3,\r\n      \"type\": \"int\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"adCooldownSeconds\",\r\n      \"value\":
+    120,\r\n      \"type\": \"int\"\r\n    }\r\n  }\r\n]"
+  _environments: "[\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
+    \"name\": \"DDNA_DEV\",\r\n    \"id\": \"4e7746a3-d618-452e-beff-33750206c2e4\",\r\n   
+    \"createdAt\": \"2021-02-07T12:35:37Z\",\r\n    \"updatedAt\": \"2021-02-07T12:35:37Z\",\r\n   
+    \"isDefault\": false\r\n  },\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
+    \"name\": \"DDNA_LIVE\",\r\n    \"id\": \"c49f5f95-c2a8-44e4-ae28-6501e4459393\",\r\n   
+    \"createdAt\": \"2021-02-07T12:35:53Z\",\r\n    \"updatedAt\": \"2021-02-07T12:48:03Z\",\r\n   
+    \"isDefault\": false\r\n  },\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
+    \"name\": \"Production\",\r\n    \"id\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n   
+    \"createdAt\": \"2021-02-07T12:47:50Z\",\r\n    \"updatedAt\": \"2021-02-07T12:48:03Z\",\r\n   
+    \"isDefault\": true\r\n  }\r\n]"
+  _rulesList: "[\r\n  {\r\n    \"id\": \"eb67a74f-f60c-4aff-8193-7c4ee07c2b48\",\r\n   
+    \"name\": \"Ads - Default\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\":
+    \"user.configName == \\\"Ads\\\" \",\r\n    \"rolloutPercentage\": 100,\r\n   
+    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\": 900,\r\n   
+    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\": {\r\n         
+    \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n        },\r\n       
+    \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n          \"value\":
+    120,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
+    {\r\n    \"id\": \"9ddfee50-bb43-4365-aa93-89c949beca44\",\r\n    \"name\": \"Ads
+    - More Frequent\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\": \"user.configName
+    == 'Ads' && user.configSegment == \\\"Frequent\\\"\",\r\n    \"rolloutPercentage\":
+    100,\r\n    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\":
+    1000,\r\n    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n         
+    \"value\": 60,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n   
+    ]\r\n  }\r\n]"
+  _lastCachedRulesList: "[\r\n  {\r\n    \"id\": \"eb67a74f-f60c-4aff-8193-7c4ee07c2b48\",\r\n   
+    \"name\": \"Ads - Default\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\":
+    \"user.configName == \\\"Ads\\\" \",\r\n    \"rolloutPercentage\": 100,\r\n   
+    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\": 900,\r\n   
+    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\": {\r\n         
+    \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n        },\r\n       
+    \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n          \"value\":
+    120,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
+    {\r\n    \"id\": \"9ddfee50-bb43-4365-aa93-89c949beca44\",\r\n    \"name\": \"Ads
+    - More Frequent\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\": \"user.configName
+    == 'Ads' && user.configSegment == \\\"Frequent\\\"\",\r\n    \"rolloutPercentage\":
+    100,\r\n    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\":
+    1000,\r\n    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n         
+    \"value\": 60,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n   
+    ]\r\n  }\r\n]"

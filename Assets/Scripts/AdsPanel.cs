@@ -6,8 +6,11 @@ using DeltaDNA;
 
 public class AdsPanel : MonoBehaviour
 {
+    
+
     private AdsManager adsManager;
     private bool adsReady; 
+
 
     [Header("Buttons")]
     [SerializeField] private Button btnInterstitial;
