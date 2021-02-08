@@ -11,7 +11,7 @@ public class PhysicsManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Physics.gravity = Input.acceleration;
     }
