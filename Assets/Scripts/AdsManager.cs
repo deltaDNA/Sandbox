@@ -184,7 +184,7 @@ public class AdsManager : MonoBehaviour
     {
         GameEvent adEvent = new GameEvent("adImpression")
         .AddParam("adCompletionStatus", currentAd.Completed ? "COMPLETED" : "INCOMPLETE")
-        .AddParam("adProvider", currentAd.Provider)
+        .AddParam("adProvider", currentAd.Provider == "ANY" ? "UNITY":currentAd.Provider)
         .AddParam("placementType", currentAd.AdType)
         .AddParam("placementId", currentAd.PlacementId)
         .AddParam("placementName", currentAd.PlacementId);

@@ -19,20 +19,26 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private TMP_Text txtValues;
     [SerializeField] private TMP_Text txtEventName;
     [SerializeField] private Toggle sdkOnStart;
+
     private AdsManager adsManager;
+    private RemoteConfigManager remoteConfigManager; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
-          //listener on startSDK toggle
+        ConfigureDeltadnaSDK();
+
+        adsManager = GetComponent<AdsManager>();
+        remoteConfigManager = GetComponent<RemoteConfigManager>();
+
+        //listener on startSDK toggle
         sdkOnStart.onValueChanged.AddListener(delegate {
             ToggleValueChanged(sdkOnStart);
         });
 
         sdkOnStart.isOn = Preferences.GetToggleStartSDK();
 
-        adsManager = GetComponent<AdsManager>();
+        
         if (DDNA.Instance.HasStarted)
         {
             //simulate a click
@@ -70,14 +76,14 @@ public class DDNA_Manager : MonoBehaviour
         //TODO check config use config instead of UI CONFIG
         if (txtStartSDK.text.StartsWith("Start"))
         {
-            ConfigureDeltadnaSDK();
 
-            DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
             DDNA.Instance.StartSDK();
             DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
 
-            HandleUIForSDK(DDNA.Instance.HasStarted);
-            Debug.Log(DDNA.Instance.ClientVersion);
+            remoteConfigManager.FetchRemoteConfig();
+
+
+            HandleUIForSDK(DDNA.Instance.HasStarted);            
             txtStartSDK.text = "Stop SDK";            
         }
         else
@@ -117,6 +123,8 @@ public class DDNA_Manager : MonoBehaviour
 
     private void ConfigureDeltadnaSDK()
     {
+        DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
+
         // Hook up callback to fire when DDNA SDK has received session config info, including Event Triggered campaigns.
         DDNA.Instance.NotifyOnSessionConfigured(true);
         DDNA.Instance.OnSessionConfigured += (bool cachedConfig) => ReceivedGameConfig(cachedConfig);
@@ -196,9 +204,17 @@ public class DDNA_Manager : MonoBehaviour
     {
         // Generic Game Parameter Handler
         Debug.Log("Received game parameters from Engage campaign: " + DeltaDNA.MiniJSON.Json.Serialize(gameParameters));
+
+        // Handle ADS commands received from DDNA
         if (gameParameters.ContainsKey("adProvider")) { 
             adsManager.ProcessAdCommands(gameParameters);
 
+        }
+
+        // Handle Remote Confic Commands received from DDNA
+        if (gameParameters.ContainsKey("remoteConfigName") || gameParameters.ContainsKey("remoteConfigSegment"))
+        {
+            remoteConfigManager.FetchRemoteConfig(gameParameters); 
         }
     }
 }
