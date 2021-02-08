@@ -56,14 +56,7 @@ public class AdsManager : MonoBehaviour
     public DateTime LastAdTimestamp { get => lastAdTimestamp; set => lastAdTimestamp = value; }
        
 
-    public int RemainingCooldownSeconds()
-    {
-        // Return the number of seconds remaining until next ad can be shown
-        DateTime nextAdTimestamp = lastAdTimestamp.AddSeconds(adCooldownSeconds);
-        double secondsRemaining = nextAdTimestamp.Subtract(DateTime.Now).TotalSeconds; 
-
-        return secondsRemaining > 0 ? Convert.ToInt32(secondsRemaining) : 0 ;           
-       } 
+ 
 
     public Ad currentAd; 
 
@@ -149,6 +142,14 @@ public class AdsManager : MonoBehaviour
         }
     }
 
+    public int RemainingCooldownSeconds()
+    {
+        // Return the number of seconds remaining until next ad can be shown
+        DateTime nextAdTimestamp = lastAdTimestamp.AddSeconds(adCooldownSeconds);
+        double secondsRemaining = nextAdTimestamp.Subtract(DateTime.Now).TotalSeconds;
+
+        return secondsRemaining > 0 ? Convert.ToInt32(secondsRemaining) : 0;
+    }
     public void ShowInterstitialAd()
     {
         ShowAd("INTERSTITIAL");

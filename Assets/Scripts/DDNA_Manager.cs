@@ -15,7 +15,7 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private Button btnADS;
     [SerializeField] private Button btnIAP;
     [SerializeField] private TMP_Text txtStartSDK;
-    [SerializeField] private  TMP_Text txtParams;
+    [SerializeField] private TMP_Text txtParams;
     [SerializeField] private TMP_Text txtValues;
     [SerializeField] private TMP_Text txtEventName;
     [SerializeField] private Toggle sdkOnStart;
@@ -196,8 +196,11 @@ public class DDNA_Manager : MonoBehaviour
     {
         // Generic Game Parameter Handler
         Debug.Log("Received game parameters from Engage campaign: " + DeltaDNA.MiniJSON.Json.Serialize(gameParameters));
-        if (gameParameters.ContainsKey("adProvider"))
+        if (gameParameters.ContainsKey("adProvider")) { 
             adsManager.ProcessAdCommands(gameParameters);
-     }
+
+        }
+    }
+    #endregion
 }
 

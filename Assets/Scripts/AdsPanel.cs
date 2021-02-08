@@ -35,8 +35,8 @@ public class AdsPanel : MonoBehaviour
             TxtCooldown.text = string.Format("Cooldown {0} seconds", remainingCoolDown);
         else if (!DDNA.Instance.HasStarted) 
             TxtCooldown.text = string.Format("Please Start DDNA SDK!");
-
-        btnInterstitial.gameObject.SetActive(adsReady);
-        btnRewarded.gameObject.SetActive(adsReady);
+        
+        btnInterstitial.interactable = adsReady;
+        btnRewarded.interactable = adsReady;
     }
 }
