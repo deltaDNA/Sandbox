@@ -78,7 +78,7 @@ public class DDNA_Manager : MonoBehaviour
 
             HandleUIForSDK(DDNA.Instance.HasStarted);
             Debug.Log(DDNA.Instance.ClientVersion);
-            btnStartSDK.text = "Stop SDK";            
+            txtStartSDK.text = "Stop SDK";            
         }
         else
         {
@@ -115,8 +115,6 @@ public class DDNA_Manager : MonoBehaviour
     }
 
 
-
-    #region DeltaDNA Functions
     private void ConfigureDeltadnaSDK()
     {
         // Hook up callback to fire when DDNA SDK has received session config info, including Event Triggered campaigns.
@@ -200,9 +198,6 @@ public class DDNA_Manager : MonoBehaviour
         Debug.Log("Received game parameters from Engage campaign: " + DeltaDNA.MiniJSON.Json.Serialize(gameParameters));
         if (gameParameters.ContainsKey("adProvider"))
             adsManager.ProcessAdCommands(gameParameters);
-        }
-    }
-    #endregion
-
-
+     }
 }
+
