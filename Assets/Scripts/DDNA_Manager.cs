@@ -10,22 +10,38 @@ using System.Text;
 
 public class DDNA_Manager : MonoBehaviour
 {
+    [Header("MAIN PANEL")]
     [SerializeField] private Button btnEvents;
     [SerializeField] private Button btnCampaigns;
     [SerializeField] private Button btnADS;
     [SerializeField] private Button btnIAP;
     [SerializeField] private TMP_Text txtStartSDK;
-    //[SerializeField] private  TMP_Text txtParams; //Issue when trying to get text from TMP :(
-    //[SerializeField] private TMP_Text txtValues;
-    //[SerializeField] private TMP_Text txtEventName;
-    [SerializeField] private Text txtEvenName;
-    [SerializeField] private Text txtParams;
-    [SerializeField] private Text txtValues;
     [SerializeField] private Toggle sdkOnStart;
 
+    [Header("EVENT PANEL")]
+    [SerializeField] private InputField txtEvenName;
+    [SerializeField] private InputField txtParams;
+    [SerializeField] private InputField txtValues;
+
+    [SerializeField] private Dropdown cboEvent;
+    [SerializeField] private Dropdown cboParams;
+    [SerializeField] private InputField txtValuesDynamics;
+
+    [SerializeField] private GameObject objParamValues;
+
+    [Header("CAMPAIGN PANEL")]
+    [SerializeField] private InputField txtDecisionPointName;
+    [SerializeField] private InputField txtDPValues;
+    [SerializeField] private InputField txtDPParameters;
+    [SerializeField] private InputField txtJSON;
 
 
-     // Start is called before the first frame update
+
+
+
+
+
+    // Start is called before the first frame update
     void Start()
     {
         //listener on startSDK toggle
@@ -33,8 +49,31 @@ public class DDNA_Manager : MonoBehaviour
             ToggleValueChanged(sdkOnStart);
         });
 
-        sdkOnStart.isOn = Preferences.GetToggleStartSDK();
-            
+        txtEvenName.onValueChanged.AddListener(delegate {
+            InputValueChanged(txtEvenName);
+        });
+
+        txtParams.onValueChanged.AddListener(delegate {
+            InputValueChanged(txtParams);
+        });
+
+        txtValues.onValueChanged.AddListener(delegate {
+            InputValueChanged(txtValues);
+        });
+
+        txtDecisionPointName.onValueChanged.AddListener(delegate {
+            InputValueChanged(txtValues);
+        });
+
+        cboEvent.onValueChanged.AddListener(delegate
+        {
+            DynamicLoadEvent();
+        });
+
+       
+
+        LoadSavedValues();
+
         if (sdkOnStart.isOn)
         {
             //simulate a click
@@ -65,6 +104,68 @@ public class DDNA_Manager : MonoBehaviour
     {
         Preferences.SaveToggleStartSDK(toggle.isOn);
     }
+
+    private void InputValueChanged(InputField field)
+    {
+        Preferences.SaveInputField(field);
+    }
+
+    private void LoadSavedValues()
+    {
+        sdkOnStart.isOn = Preferences.GetToggleStartSDK();
+        txtEvenName.text = Preferences.GetInputField(txtEvenName);
+        txtParams.text = Preferences.GetInputField(txtParams);
+        txtValues.text = Preferences.GetInputField(txtValues);
+        txtDecisionPointName.text = Preferences.GetInputField(txtDecisionPointName);
+    }
+
+    /// <summary>
+    ///  Dynamic load of events through platformapi
+    /// </summary>
+    private void DynamicLoadEvent()
+    {
+        //TODO Load event from json
+
+        //Clear all existing events and params
+        RemoveDynamicParams();
+        DynamicLoadParams();
+    }
+
+    /// <summary>
+    /// Once an event is dynamically picked we will load all valid parameters
+    /// </summary>
+    private void DynamicLoadParams()
+    {
+        GameObject temp = null;
+        //TODO find what event has been chosen from cboEvents
+
+        //For each param in the event create a new objparam from prefabs + the height + 15
+        for (int i = 0; i <= 10 - 1; i++) //todo get the length from the json
+        {
+            if (i==0)
+            {
+                temp = Instantiate(objParamValues, new Vector3(objParamValues.transform.position.x, cboParams.transform.position.y - 125, cboEvent.transform.position.z), Quaternion.identity, cboEvent.transform.parent);
+            }
+            else
+            {
+                temp = Instantiate(objParamValues, new Vector3(objParamValues.transform.position.x, temp.transform.position.y - 125, cboEvent.transform.position.z), Quaternion.identity, cboEvent.transform.parent);
+            }
+            temp.tag = "dynamic";//tag fo later removal;
+
+        }
+    }
+
+    private void RemoveDynamicParams()
+    {
+        GameObject[] objectsToDelete;
+        objectsToDelete = GameObject.FindGameObjectsWithTag("dynamic");
+
+        foreach(GameObject obj in objectsToDelete)
+        {
+            Destroy(obj);
+        }
+    }
+
     public void OnStartSDKClicked()
     {
         // Default Configuration points to
@@ -97,32 +198,21 @@ public class DDNA_Manager : MonoBehaviour
         GameEvent gameEvent = null;
         String eventName = txtEvenName.text.ToString().Trim();
 
-        //if(2==1)
-        //{
-        //    gameEvent = new GameEvent("missionStarted")
-        //        .AddParam("missionName", "Mission1");
-        //    DDNA.Instance.RecordEvent(gameEvent);
-
-        //}
-        //else //not working
-        //{
-            for (int i = 0; i <= parameters.Length - 1; i++)
+        for (int i = 0; i <= parameters.Length - 1; i++)
+        {
+            if (i == 0)
             {
-                if (i == 0)
-                {
-                    //var utf8 = Encoding.Unicode;
-                    //byte[] utfBytes = utf8.GetBytes(eventName);
-                    //eventName = utf8.GetString(utfBytes, 0, utfBytes.Length);
-                    gameEvent = new GameEvent(eventName);
-                }
-
-                gameEvent.AddParam(parameters[i], values[i]);
+                //var utf8 = Encoding.Unicode;
+                //byte[] utfBytes = utf8.GetBytes(eventName);
+                //eventName = utf8.GetString(utfBytes, 0, utfBytes.Length);
+                gameEvent = new GameEvent(eventName);
             }
 
-            if (gameEvent != null)
-                DDNA.Instance.RecordEvent(gameEvent);
-        //}
- 
+            gameEvent.AddParam(parameters[i], values[i]);
+        }
+
+        if (gameEvent != null)
+            DDNA.Instance.RecordEvent(gameEvent);
     }
 
 
@@ -153,7 +243,42 @@ public class DDNA_Manager : MonoBehaviour
         DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
     }
 
+    public void OnEngagementDPClick()
+    {
+        string decisionPoint = txtDecisionPointName.text;
+        string[] parameters = txtDPParameters.text.Split(';');
+        string[] values = txtDPValues.text.Split(';');
+    
 
+        if (decisionPoint != "")
+        {
+            if (parameters[0] != "")
+            {
+                Params customParams = null;
+             
+                for (int i = 0; i <= parameters.Length - 1; i++)
+                {
+                    if (i == 0)
+                    {
+                        customParams = new Params();
+                    }
+
+                    customParams.AddParam(parameters[i], values[i]);
+                }
+
+                DDNA.Instance.EngageFactory.RequestGameParameters(decisionPoint, customParams,(gameParameters) => {
+                    txtJSON.text = DeltaDNA.MiniJSON.Json.Serialize(gameParameters);
+                });
+            }
+            else
+            {
+                DDNA.Instance.EngageFactory.RequestGameParameters(decisionPoint, (gameParameters) => {
+                    txtJSON.text = DeltaDNA.MiniJSON.Json.Serialize(gameParameters);
+                });
+            }
+            
+        }
+    }
 
     public void ReceivedGameConfig(bool cachedConfig)
     {
@@ -178,6 +303,13 @@ public class DDNA_Manager : MonoBehaviour
 
     private void myImageMessageHandler(ImageMessage imageMessage)
     {
+      
+        imageMessage.OnStore += eventArgs =>
+        {
+            Application.OpenURL(eventArgs.ActionValue);
+        };
+    
+       
         // Add a handler for the 'dismiss' action.
         imageMessage.OnDismiss += (ImageMessage.EventArgs obj) => {
             Debug.Log("Image Message dismissed by " + obj.ID);
@@ -218,3 +350,4 @@ public class DDNA_Manager : MonoBehaviour
 
 
 }
+
