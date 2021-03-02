@@ -36,6 +36,16 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private InputField txtJSON;
 
 
+    [Header("CONFIG PANEL")]
+    [SerializeField] private InputField txtEnvironmentLIVE;
+    [SerializeField] private InputField txtEnvironmentDEV;
+    [SerializeField] private InputField txtCollectURL;
+    [SerializeField] private InputField txtEngageURL;
+    [SerializeField] private InputField txtFirebaseSenderID;
+    [SerializeField] private InputField txtFirebaseProjectID;
+    [SerializeField] private InputField txtFirebaseAPI;
+    [SerializeField] private InputField txtFirebaseAPPID;
+
 
 
 
@@ -43,6 +53,23 @@ public class DDNA_Manager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    {
+
+        LoadConfigValues();
+        AddListeners();
+        LoadSavedValues();
+        
+        if (sdkOnStart.isOn)
+        {
+            //simulate a click
+            OnStartSDKClicked();
+        }
+     
+        HandleUIForSDK(DDNA.Instance.HasStarted);
+      
+    }
+
+    private void AddListeners()
     {
         //listener on startSDK toggle
         sdkOnStart.onValueChanged.AddListener(delegate {
@@ -62,26 +89,15 @@ public class DDNA_Manager : MonoBehaviour
         });
 
         txtDecisionPointName.onValueChanged.AddListener(delegate {
-            InputValueChanged(txtValues);
+            InputValueChanged(txtDecisionPointName);
         });
+
 
         cboEvent.onValueChanged.AddListener(delegate
         {
             DynamicLoadEvent();
         });
 
-       
-
-        LoadSavedValues();
-
-        if (sdkOnStart.isOn)
-        {
-            //simulate a click
-            OnStartSDKClicked();
-        }
-     
-        HandleUIForSDK(DDNA.Instance.HasStarted);
-      
     }
 
     private void HandleUIForSDK(bool hasStarted)
@@ -110,13 +126,43 @@ public class DDNA_Manager : MonoBehaviour
         Preferences.SaveInputField(field);
     }
 
+    
+    private void SaveConfigValues()
+    {
+        Configuration config = Configuration.GetAssetInstance();
+        config.environmentKeyDev = txtEnvironmentDEV.text;
+        config.environmentKeyLive = txtEnvironmentLIVE.text;
+        config.engageUrl = txtEngageURL.text;
+        config.collectUrl = txtCollectURL.text;
+       
+
+    }
+
+
     private void LoadSavedValues()
     {
+        //Main Panel
         sdkOnStart.isOn = Preferences.GetToggleStartSDK();
+
+        //EVENTS Panel
         txtEvenName.text = Preferences.GetInputField(txtEvenName);
         txtParams.text = Preferences.GetInputField(txtParams);
         txtValues.text = Preferences.GetInputField(txtValues);
+
+        //DPPANEL
         txtDecisionPointName.text = Preferences.GetInputField(txtDecisionPointName);
+    }
+
+    private void LoadConfigValues()
+    {
+        Configuration config = Configuration.GetAssetInstance();
+
+        txtEnvironmentDEV.text = config.environmentKeyDev;
+        txtEnvironmentLIVE.text = config.environmentKeyLive;
+        txtCollectURL.text = config.collectUrl;
+        txtEngageURL.text = config.engageUrl;
+
+      
     }
 
     /// <summary>
@@ -174,6 +220,7 @@ public class DDNA_Manager : MonoBehaviour
         if (txtStartSDK.text.StartsWith("Start"))
         {
             ConfigureDeltadnaSDK();
+     
 
             DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
             DDNA.Instance.StartSDK();
@@ -214,8 +261,6 @@ public class DDNA_Manager : MonoBehaviour
         if (gameEvent != null)
             DDNA.Instance.RecordEvent(gameEvent);
     }
-
-
 
     #region DeltaDNA Functions
     private void ConfigureDeltadnaSDK()

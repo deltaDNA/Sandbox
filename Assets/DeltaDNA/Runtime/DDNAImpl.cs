@@ -133,13 +133,13 @@ namespace DeltaDNA {
                     Settings.BackgroundEventUploadStartDelaySeconds,
                     Settings.BackgroundEventUploadRepeatRateSeconds);
             }
-
+           
             if (Settings.SendGameRunningEveryMinute)
             {
                 RecordGameRunningEvent();
             }
         }
-
+        
         override internal void StopSDK() {
             if (started) {
                 Logger.LogInfo("Stopping DDNA SDK");
