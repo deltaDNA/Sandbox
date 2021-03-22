@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Preferences class will be used to save UI options
 /// </summary>
-public class Preferences 
+public class Preferences
 {
     /// <summary>
     /// Handles saving the value based on true or false
@@ -22,7 +23,18 @@ public class Preferences
     /// <returns>boolean</returns>
     public static bool GetToggleStartSDK()
     {
-       return PlayerPrefs.GetInt("ToggleStartSDK") == 1 ? true:false ;
-        
+        return PlayerPrefs.GetInt("ToggleStartSDK") == 1 ? true : false;
+
     }
+
+    public static void SaveInputField(InputField fieldName)
+    {
+        PlayerPrefs.SetString(fieldName.name, fieldName.text);
+    }
+
+    public static string GetInputField(InputField fieldName)
+    {
+        return PlayerPrefs.GetString(fieldName.name);
+    }
+
 }
