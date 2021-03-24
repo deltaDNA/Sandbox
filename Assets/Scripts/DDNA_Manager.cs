@@ -56,36 +56,25 @@ public class DDNA_Manager : MonoBehaviour
 
     void Start()
     {
-        ConfigureDeltadnaSDK();
+        LoadConfigValues();
+     
+        LoadSavedValues();
 
         adsManager = GetComponent<AdsManager>();
         remoteConfigManager = GetComponent<RemoteConfigManager>();
 
-        //listener on startSDK toggle
-        sdkOnStart.onValueChanged.AddListener(delegate
-        {
-            ToggleValueChanged(sdkOnStart);
-        });
-
         sdkOnStart.isOn = Preferences.GetToggleStartSDK();
-
-
-        if (DDNA.Instance.HasStarted)
+     
+        if (sdkOnStart.isOn)
         {
-
-            LoadConfigValues();
-            AddListeners();
-            LoadSavedValues();
-
-            if (sdkOnStart.isOn)
-            {
-                //simulate a click
-                OnStartSDKClicked();
-            }
-
-            HandleUIForSDK(DDNA.Instance.HasStarted);
-
+            //simulate a click
+            StartSDK();
         }
+
+        HandleUIForSDK(DDNA.Instance.HasStarted);
+
+
+        AddListeners();
     }
 
     private void AddListeners()
@@ -277,6 +266,29 @@ public class DDNA_Manager : MonoBehaviour
 
 
     }
+
+    private void StartSDK()
+    {
+        if (txtStartSDK.text.StartsWith("Start"))
+        {
+            ConfigureDeltadnaSDK();
+
+            // Hook up callback to fire when DDNA SDK has received session config info, including Event Triggered campaigns.
+            //TODO RE-ENABLE WHEN I FIGURE OUT WHAT THE HELL HAPPENED THAT WE LOST ALL REMOTE CONFIG AND IAP
+            //DDNA.Instance.NotifyOnSessionConfigured(true);
+            //DDNA.Instance.OnSessionConfigured += (bool cachedConfig) => ReceivedGameConfig(cachedConfig);
+            DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
+            DDNA.Instance.StartSDK();
+            DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
+            HandleUIForSDK(DDNA.Instance.HasStarted);
+            Debug.Log(DDNA.Instance.ClientVersion);
+        }
+        else
+        {
+            DDNA.Instance.StopSDK();
+            HandleUIForSDK(false);
+        }
+    }
     public void OnRecordEventClick()
     {
         string[] parameters;
@@ -300,7 +312,7 @@ public class DDNA_Manager : MonoBehaviour
         }
 
         if (gameEvent != null)
-            DDNA.Instance.RecordEvent(gameEvent);
+            DDNA.Instance.RecordEvent(gameEvent).Run();
     }
 
     #region DeltaDNA Functions
