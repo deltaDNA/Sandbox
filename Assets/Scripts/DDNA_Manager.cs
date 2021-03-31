@@ -23,7 +23,7 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private Button btnIAP;
     [SerializeField] private TMP_Text txtStartSDK;
     [SerializeField] private Toggle sdkOnStart;
-
+  
     [Header("EVENT PANEL")]
     [SerializeField] private InputField txtEventName;
     [SerializeField] private InputField txtParams;
@@ -48,10 +48,20 @@ public class DDNA_Manager : MonoBehaviour
     [SerializeField] private InputField txtFirebaseProjectID;
     [SerializeField] private InputField txtFirebaseAPI;
     [SerializeField] private InputField txtFirebaseAPPID;
+    [SerializeField] private Toggle sdkSandboxConfig;
+    [SerializeField] private Toggle sdkUseEditor;
+    [SerializeField] private Dropdown cboEnvironment;
+
+
 
 
     private AdsManager adsManager;
     private RemoteConfigManager remoteConfigManager;
+
+    private const string SandboxEnvDEV = "57279990630050060662132029116118";
+    private const string SandboxEnvLIVE = "57280014549037254308033535216118";
+    private const string SandboxCollectURL   = "https://collect20184sndbx.deltadna.net/collect/api";
+    private const string SandboxEngageURL = "https://engage20184sndbx.deltadna.net";
 
 
     void Start()
@@ -64,7 +74,9 @@ public class DDNA_Manager : MonoBehaviour
         remoteConfigManager = GetComponent<RemoteConfigManager>();
 
         sdkOnStart.isOn = Preferences.GetToggleStartSDK();
-     
+        sdkSandboxConfig.isOn = Preferences.GetToggleSandbox();
+        sdkUseEditor.isOn = Preferences.GetToggleUseEditor();
+
         if (sdkOnStart.isOn)
         {
             //simulate a click
@@ -129,14 +141,14 @@ public class DDNA_Manager : MonoBehaviour
     public void ToggleValueChanged(UnityEngine.UI.Toggle toggle)
     {
 
-        DDNA.Instance.StartSDK();
-        DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
+        //DDNA.Instance.StartSDK();
+        //DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
 
-        remoteConfigManager.FetchRemoteConfig();
+        //remoteConfigManager.FetchRemoteConfig();
 
 
         HandleUIForSDK(DDNA.Instance.HasStarted);
-        txtStartSDK.text = "Stop SDK";
+        //txtStartSDK.text = "Stop SDK";
         Preferences.SaveToggleStartSDK(toggle.isOn);
     }
 
@@ -148,22 +160,27 @@ public class DDNA_Manager : MonoBehaviour
 
     public void SaveConfigValues()
     {
-        Configuration cfg = Configuration.GetAssetInstance();
+        //Override default config on sandbox to new platform
+        Preferences.SaveToggleSandbox(sdkSandboxConfig.isOn);
+        Preferences.SaveToggleUseEditor(sdkUseEditor.isOn);
 
-
-        //Configuration cfg = AssetDatabase.LoadAssetAtPath<Configuration>(Configuration.FULL_ASSET_PATH);
-        cfg.environmentKeyDev = txtEnvironmentDEV.text;
-        cfg.environmentKeyLive = txtEnvironmentLIVE.text;
-        cfg.engageUrl = txtEngageURL.text;
-        cfg.collectUrl = txtCollectURL.text;
-
-
-
-
-        //AssetDatabase.SaveAssets();
-
-
-
+        if (sdkSandboxConfig.isOn)
+        {  
+            Preferences.SaveEnvironment(cboEnvironment.value);
+            Preferences.SaveInputField(txtCollectURL,SandboxCollectURL);
+            Preferences.SaveInputField(txtEngageURL,SandboxEngageURL);
+            Preferences.SaveInputField(txtEnvironmentDEV,SandboxEnvDEV);
+            Preferences.SaveInputField(txtEnvironmentLIVE,SandboxEnvLIVE);
+        }
+        else
+        {
+            Preferences.SaveEnvironment(cboEnvironment.value);
+            Preferences.SaveInputField(txtCollectURL);
+            Preferences.SaveInputField(txtEngageURL);
+            Preferences.SaveInputField(txtEnvironmentDEV);
+            Preferences.SaveInputField(txtEnvironmentLIVE);
+         
+        }
     }
 
 
@@ -183,14 +200,41 @@ public class DDNA_Manager : MonoBehaviour
 
     private void LoadConfigValues()
     {
+        string tempEnvKeyDev = "";
+        string tempEnvKeyLive = "";
+        string tempCollectURL = "";
+        string tempEngageURL = "";
+
         Configuration config = Configuration.GetAssetInstance();
 
-        txtEnvironmentDEV.text = config.environmentKeyDev;
-        txtEnvironmentLIVE.text = config.environmentKeyLive;
-        txtCollectURL.text = config.collectUrl;
-        txtEngageURL.text = config.engageUrl;
 
+        string validator = Preferences.GetInputField(txtEnvironmentDEV);
+        if (!string.IsNullOrEmpty(validator))
+        {
+            tempEnvKeyDev = Preferences.GetInputField(txtEnvironmentDEV);
+            tempEnvKeyLive = Preferences.GetInputField(txtEnvironmentLIVE);
+            tempCollectURL = Preferences.GetInputField(txtCollectURL);
+            tempEngageURL = Preferences.GetInputField(txtEngageURL);
+        }
+        else if(sdkSandboxConfig.isOn)
+        {
+            tempEnvKeyDev = config.environmentKeyDev;
+            tempEnvKeyLive = config.environmentKeyLive;
+            tempCollectURL = config.collectUrl;
+            tempEngageURL = config.engageUrl;
+        }
+        else
+        {
+            tempEnvKeyDev = config.environmentKeyDev;
+            tempEnvKeyLive = config.environmentKeyLive;
+            tempCollectURL = config.collectUrl;
+            tempEngageURL = config.engageUrl;
+        }
 
+        txtEnvironmentDEV.text = tempEnvKeyDev;
+        txtEnvironmentLIVE.text = tempEnvKeyLive;
+        txtCollectURL.text = tempCollectURL;
+        txtEngageURL.text = tempEngageURL;
     }
 
     /// <summary>
@@ -242,29 +286,7 @@ public class DDNA_Manager : MonoBehaviour
 
     public void OnStartSDKClicked()
     {
-        // Default Configuration points to
-        // https://www.deltadna.net/demo-account/sandbox/dev 
-        //TODO check config use config instead of UI CONFIG
-        if (txtStartSDK.text.StartsWith("Start"))
-        {
-            ConfigureDeltadnaSDK();
-
-            // Hook up callback to fire when DDNA SDK has received session config info, including Event Triggered campaigns.
-            DDNA.Instance.NotifyOnSessionConfigured(true);
-            DDNA.Instance.OnSessionConfigured += (bool cachedConfig) => ReceivedGameConfig(cachedConfig);
-            DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
-            DDNA.Instance.StartSDK();
-            DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
-            HandleUIForSDK(DDNA.Instance.HasStarted);
-            Debug.Log(DDNA.Instance.ClientVersion);
-        }
-        else
-        {
-            DDNA.Instance.StopSDK();
-            HandleUIForSDK(false);
-        }
-
-
+        StartSDK();
     }
 
     private void StartSDK()
@@ -275,13 +297,54 @@ public class DDNA_Manager : MonoBehaviour
 
             // Hook up callback to fire when DDNA SDK has received session config info, including Event Triggered campaigns.
             //TODO RE-ENABLE WHEN I FIGURE OUT WHAT THE HELL HAPPENED THAT WE LOST ALL REMOTE CONFIG AND IAP
+            DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
             //DDNA.Instance.NotifyOnSessionConfigured(true);
             //DDNA.Instance.OnSessionConfigured += (bool cachedConfig) => ReceivedGameConfig(cachedConfig);
-            DDNA.Instance.SetLoggingLevel(DeltaDNA.Logger.Level.DEBUG);
-            DDNA.Instance.StartSDK();
+
+            if (sdkUseEditor.isOn)
+            {
+                DDNA.Instance.StartSDK();
+            }
+            else
+            {
+                string tempEnvKeyDev = "";
+                string tempEnvKeyLive = "";
+                string tempCollectURL = "";
+                string tempEngageURL= "";
+
+                if(sdkSandboxConfig.isOn)
+                {
+                    tempEnvKeyDev = SandboxEnvDEV;
+                    tempEnvKeyLive = SandboxEnvLIVE;
+                    tempCollectURL = SandboxCollectURL;
+                    tempEngageURL = SandboxEngageURL;
+                }
+                else {
+                    string validator = Preferences.GetInputField(txtEnvironmentDEV);
+                    if (!string.IsNullOrEmpty(validator))
+                    {
+                        tempEnvKeyDev = Preferences.GetInputField(txtEnvironmentDEV);
+                        tempEnvKeyLive = Preferences.GetInputField(txtEnvironmentLIVE);
+                        tempCollectURL = Preferences.GetInputField(txtCollectURL);
+                        tempEngageURL = Preferences.GetInputField(txtEngageURL);
+                    }
+                    
+                }
+
+                DDNA.Instance.StartSDK(new Configuration()
+                {
+                    environmentKeyLive = tempEnvKeyLive,
+                    environmentKeyDev =tempEnvKeyDev,
+                    environmentKey = cboEnvironment.value,
+                    collectUrl = tempCollectURL,
+                    engageUrl = tempEngageURL,
+                    useApplicationVersion = true
+                });
+            }
+            
+
             DDNA.Instance.AndroidNotifications.RegisterForPushNotifications();
             HandleUIForSDK(DDNA.Instance.HasStarted);
-            Debug.Log(DDNA.Instance.ClientVersion);
         }
         else
         {

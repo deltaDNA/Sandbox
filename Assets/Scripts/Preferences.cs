@@ -27,14 +27,47 @@ public class Preferences
 
     }
 
+    public static void SaveToggleSandbox(bool toggle)
+    {
+        PlayerPrefs.SetInt("ToggleSandBox", toggle ? 1 : 0);
+    }
+
+    public static bool GetToggleSandbox()
+    {
+        return PlayerPrefs.GetInt("ToggleStartSDK") == 1 ? true : false;
+    }
+
+    public static void SaveToggleUseEditor(bool toggle)
+    {
+        PlayerPrefs.SetInt("ToggleEditor", toggle ? 1 : 0);
+    }
+
+    public static bool GetToggleUseEditor()
+    {
+        return PlayerPrefs.GetInt("ToggleEditor") == 1 ? true : false;
+    }
+
     public static void SaveInputField(InputField fieldName)
     {
         PlayerPrefs.SetString(fieldName.name, fieldName.text);
     }
-
+    public static void SaveInputField(InputField fieldName, string overrideValue)
+    {
+        PlayerPrefs.SetString(fieldName.name, overrideValue);
+    }
     public static string GetInputField(InputField fieldName)
     {
         return PlayerPrefs.GetString(fieldName.name);
     }
 
+
+    public static void SaveEnvironment(int value)
+    {
+        PlayerPrefs.SetInt("SelectedEnvironment", value);
+    }
+
+    public static int GetEnvironment()
+    {
+        return PlayerPrefs.GetInt("SelectedEnvironment");
+    }
 }
