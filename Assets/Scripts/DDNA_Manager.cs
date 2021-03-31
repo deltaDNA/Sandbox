@@ -363,11 +363,8 @@ public class DDNA_Manager : MonoBehaviour
 
         for (int i = 0; i <= parameters.Length - 1; i++)
         {
-            if (i == 0)
+            if (i == 0) //declare new gameevent for first loop
             {
-                //var utf8 = Encoding.Unicode;
-                //byte[] utfBytes = utf8.GetBytes(eventName);
-                //eventName = utf8.GetString(utfBytes, 0, utfBytes.Length);
                 gameEvent = new GameEvent(eventName);
             }
 
@@ -512,14 +509,14 @@ public class DDNA_Manager : MonoBehaviour
         // Handle ADS commands received from DDNA
         if (gameParameters.ContainsKey("adProvider"))
         {
-            adsManager.ProcessAdCommands(gameParameters);
+            //adsManager.ProcessAdCommands(gameParameters);
 
         }
 
         // Handle Remote Confic Commands received from DDNA
         if (gameParameters.ContainsKey("remoteConfigName") || gameParameters.ContainsKey("remoteConfigSegment"))
         {
-            remoteConfigManager.FetchRemoteConfig(gameParameters);
+            //remoteConfigManager.FetchRemoteConfig(gameParameters);
         }
 
     }
