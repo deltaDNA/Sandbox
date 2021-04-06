@@ -29,6 +29,7 @@ public class AdsPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checks remaining cooldown to provide ad when required
         int remainingCoolDown = adsManager.RemainingCooldownSeconds();
         adsReady = adsManager.State == AdState.Ready &&  remainingCoolDown == 0  && DDNA.Instance.HasStarted;
 
