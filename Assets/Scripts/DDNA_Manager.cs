@@ -509,14 +509,14 @@ public class DDNA_Manager : MonoBehaviour
         // Handle ADS commands received from DDNA
         if (gameParameters.ContainsKey("adProvider"))
         {
-            //adsManager.ProcessAdCommands(gameParameters);
+            adsManager.ProcessAdCommands(gameParameters);
 
         }
 
         // Handle Remote Confic Commands received from DDNA
         if (gameParameters.ContainsKey("remoteConfigName") || gameParameters.ContainsKey("remoteConfigSegment"))
         {
-            //remoteConfigManager.FetchRemoteConfig(gameParameters);
+            remoteConfigManager.FetchRemoteConfig(gameParameters);
         }
 
     }
