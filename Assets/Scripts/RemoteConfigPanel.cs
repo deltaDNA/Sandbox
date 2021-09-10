@@ -39,7 +39,7 @@ public class RemoteConfigPanel : MonoBehaviour
     public void BtnFetchClicked()
     {
         Debug.Log("Fetching " + txtConfigName.text);
-
+        
         if (remoteConfigManager)
         {           
             remoteConfigManager.FetchRemoteConfig(txtConfigEnvironment.text, txtConfigName.text, txtConfigSegment.text);

@@ -12,41 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"161118dc-8ab5-49d9-84f6-17cab82a882e\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"dfcfbad5-f434-41f8-af7a-c96d8892d481\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"adProvider\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"UNITY\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"94d07d49-37d8-4d10-ab1b-5a09b2a39ba0\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"adRewardType\",\r\n      \"value\": \"COINS\",\r\n     
-    \"type\": \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"cd0286a3-a187-49ad-9818-ebc2047e1f79\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"adRewardValue\",\r\n      \"value\": 250,\r\n      \"type\":
-    \"int\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"0faa5120-8d8d-4250-a411-dd38ddd8bc12\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"adPerSessionLimit\",\r\n      \"value\": 3,\r\n      \"type\": \"int\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"adCooldownSeconds\",\r\n      \"value\":
-    120,\r\n      \"type\": \"int\"\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"161118dc-8ab5-49d9-84f6-17cab82a882e\"\r\n   
+    \"entityId\": \"834b263d-53d0-4829-acc0-0ac7638f1805\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardType\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"COINS\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"74bacc21-fd91-4907-ae35-dcc70be0b920\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardValue\",\r\n      \"type\": \"int\",\r\n      \"value\":
+    250\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"def1c55a-f31b-4860-955d-1792906a240b\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"adPerSessionLimit\",\r\n      \"type\":
+    \"int\",\r\n      \"value\": 3\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"52978a3f-c9f2-45b2-a625-1e96653a592b\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adCooldownSeconds\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 120\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"itemName\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Roast
+    Chicken Dinner\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"itemType\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Food\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"itemAmount\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 1\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"dfcfbad5-f434-41f8-af7a-c96d8892d481\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"adProvider\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"UNITY\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"94d07d49-37d8-4d10-ab1b-5a09b2a39ba0\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"adRewardType\",\r\n      \"value\": \"COINS\",\r\n     
-    \"type\": \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"cd0286a3-a187-49ad-9818-ebc2047e1f79\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"adRewardValue\",\r\n      \"value\": 250,\r\n      \"type\":
-    \"int\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"0faa5120-8d8d-4250-a411-dd38ddd8bc12\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"adPerSessionLimit\",\r\n      \"value\": 3,\r\n      \"type\": \"int\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"adCooldownSeconds\",\r\n      \"value\":
-    120,\r\n      \"type\": \"int\"\r\n    }\r\n  }\r\n]"
+    \"entityId\": \"834b263d-53d0-4829-acc0-0ac7638f1805\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardType\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"COINS\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"74bacc21-fd91-4907-ae35-dcc70be0b920\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adRewardValue\",\r\n      \"type\": \"int\",\r\n      \"value\":
+    250\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"def1c55a-f31b-4860-955d-1792906a240b\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"adPerSessionLimit\",\r\n      \"type\":
+    \"int\",\r\n      \"value\": 3\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"52978a3f-c9f2-45b2-a625-1e96653a592b\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"adCooldownSeconds\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 120\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"itemName\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Roast
+    Chicken Dinner\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"itemType\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Food\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"itemAmount\",\r\n      \"type\": \"int\",\r\n     
+    \"value\": 1\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
-    \"name\": \"DDNA_DEV\",\r\n    \"id\": \"4e7746a3-d618-452e-beff-33750206c2e4\",\r\n   
-    \"createdAt\": \"2021-02-07T12:35:37Z\",\r\n    \"updatedAt\": \"2021-02-07T12:35:37Z\",\r\n   
-    \"isDefault\": false\r\n  },\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
-    \"name\": \"DDNA_LIVE\",\r\n    \"id\": \"c49f5f95-c2a8-44e4-ae28-6501e4459393\",\r\n   
-    \"createdAt\": \"2021-02-07T12:35:53Z\",\r\n    \"updatedAt\": \"2021-02-07T12:48:03Z\",\r\n   
-    \"isDefault\": false\r\n  },\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
     \"name\": \"Production\",\r\n    \"id\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n   
     \"createdAt\": \"2021-02-07T12:47:50Z\",\r\n    \"updatedAt\": \"2021-02-07T12:48:03Z\",\r\n   
     \"isDefault\": true\r\n  }\r\n]"
@@ -55,32 +65,141 @@ MonoBehaviour:
     \"user.configName == \\\"Ads\\\" \",\r\n    \"rolloutPercentage\": 100,\r\n   
     \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\": 900,\r\n   
     \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\": {\r\n         
-    \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n        },\r\n       
-    \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n          \"value\":
-    120,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
+    \"entityId\": \"52978a3f-c9f2-45b2-a625-1e96653a592b\"\r\n        },\r\n       
+    \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n          \"type\":
+    \"int\",\r\n          \"value\": 100\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
     {\r\n    \"id\": \"9ddfee50-bb43-4365-aa93-89c949beca44\",\r\n    \"name\": \"Ads
     - More Frequent\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\": \"user.configName
     == 'Ads' && user.configSegment == \\\"Frequent\\\"\",\r\n    \"rolloutPercentage\":
     100,\r\n    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\":
-    1000,\r\n    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
-    {\r\n          \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n       
+    800,\r\n    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"52978a3f-c9f2-45b2-a625-1e96653a592b\"\r\n       
     },\r\n        \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n         
-    \"value\": 60,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n   
-    ]\r\n  }\r\n]"
-  _lastCachedRulesList: "[\r\n  {\r\n    \"id\": \"eb67a74f-f60c-4aff-8193-7c4ee07c2b48\",\r\n   
-    \"name\": \"Ads - Default\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\":
-    \"user.configName == \\\"Ads\\\" \",\r\n    \"rolloutPercentage\": 100,\r\n   
-    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\": 900,\r\n   
+    \"type\": \"int\",\r\n          \"value\": 60\r\n        }\r\n      }\r\n   
+    ]\r\n  },\r\n  {\r\n    \"id\": \"347c656f-233f-4f52-9c8e-35c1edaa49b0\",\r\n   
+    \"name\": \"Store - Starter Bundle - UK\",\r\n    \"type\": \"segmentation\",\r\n   
+    \"condition\": \"user.configName == 'Store' && user.configSegment == 'Starter
+    Bundle' && unity.country == 'GB'\",\r\n    \"rolloutPercentage\": 100,\r\n   
+    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\": 1000,\r\n   
     \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\": {\r\n         
-    \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n        },\r\n       
-    \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n          \"value\":
-    120,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
-    {\r\n    \"id\": \"9ddfee50-bb43-4365-aa93-89c949beca44\",\r\n    \"name\": \"Ads
-    - More Frequent\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\": \"user.configName
-    == 'Ads' && user.configSegment == \\\"Frequent\\\"\",\r\n    \"rolloutPercentage\":
-    100,\r\n    \"startDate\": \"\",\r\n    \"endDate\": \"\",\r\n    \"priority\":
-    1000,\r\n    \"enabled\": true,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
-    {\r\n          \"entityId\": \"0724b7f0-1ed7-4b21-8a1c-cae1908a8846\"\r\n       
+    \"entityId\": \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n        },\r\n       
+    \"rs\": {\r\n          \"key\": \"itemName\",\r\n          \"type\": \"string\",\r\n         
+    \"value\": \"Roast Beef & Yorksire Puddings\"\r\n        }\r\n      },\r\n     
+    {\r\n        \"metadata\": {\r\n          \"entityId\": \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemType\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"Food\"\r\n        }\r\n      },\r\n     
+    {\r\n        \"metadata\": {\r\n          \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemAmount\",\r\n          \"type\":
+    \"int\",\r\n          \"value\": 1\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
+    {\r\n    \"id\": \"108f51cd-03e0-4682-9c71-22233c44d8b1\",\r\n    \"name\": \"Store
+    - Starter Bundle - US\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\":
+    \"user.configName == 'Store' && user.configSegment == 'Starter Bundle' && unity.country
+    == 'US'\",\r\n    \"rolloutPercentage\": 100,\r\n    \"startDate\": \"\",\r\n   
+    \"endDate\": \"\",\r\n    \"priority\": 1000,\r\n    \"enabled\": true,\r\n   
+    \"value\": [\r\n      {\r\n        \"metadata\": {\r\n          \"entityId\":
+    \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n        },\r\n        \"rs\": {\r\n         
+    \"key\": \"itemName\",\r\n          \"type\": \"string\",\r\n          \"value\":
+    \"New York Deli Pastrami Sandwich\"\r\n        }\r\n      },\r\n      {\r\n       
+    \"metadata\": {\r\n          \"entityId\": \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemType\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"Food\"\r\n        }\r\n      },\r\n     
+    {\r\n        \"metadata\": {\r\n          \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemAmount\",\r\n          \"type\":
+    \"int\",\r\n          \"value\": 1\r\n        }\r\n      }\r\n    ]\r\n  },\r\n 
+    {\r\n    \"id\": \"1ed7efae-3f97-4f4d-8cd2-6d02ccc10088\",\r\n    \"name\": \"Store
+    - Starter Bundle - CA\",\r\n    \"type\": \"segmentation\",\r\n    \"condition\":
+    \"user.configName == 'Store' && user.configSegment == 'Starter Bundle' && unity.country
+    == 'CA'\",\r\n    \"rolloutPercentage\": 100,\r\n    \"startDate\": \"\",\r\n   
+    \"endDate\": \"\",\r\n    \"priority\": 1000,\r\n    \"enabled\": true,\r\n   
+    \"value\": [\r\n      {\r\n        \"metadata\": {\r\n          \"entityId\":
+    \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n        },\r\n        \"rs\": {\r\n         
+    \"key\": \"itemName\",\r\n          \"type\": \"string\",\r\n          \"value\":
+    \"Pancakes and Maple Syrup\"\r\n        }\r\n      },\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemType\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"Food\"\r\n        }\r\n      },\r\n     
+    {\r\n        \"metadata\": {\r\n          \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemAmount\",\r\n          \"type\":
+    \"int\",\r\n          \"value\": 1\r\n        }\r\n      }\r\n    ]\r\n  }\r\n]"
+  _lastCachedRulesList: "[\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
+    \"environmentId\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n    \"configId\":
+    \"193d8bfb-29cc-42ff-bdd6-a8dd5d84ad7b\",\r\n    \"name\": \"Ads - Default\",\r\n   
+    \"enabled\": true,\r\n    \"condition\": \"user.configName == \\\"Ads\\\" \",\r\n   
+    \"rolloutPercentage\": 100,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"52978a3f-c9f2-45b2-a625-1e96653a592b\"\r\n       
     },\r\n        \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n         
-    \"value\": 60,\r\n          \"type\": \"int\"\r\n        }\r\n      }\r\n   
-    ]\r\n  }\r\n]"
+    \"type\": \"int\",\r\n          \"value\": 100\r\n        }\r\n      }\r\n   
+    ],\r\n    \"id\": \"eb67a74f-f60c-4aff-8193-7c4ee07c2b48\",\r\n    \"priority\":
+    900,\r\n    \"type\": \"segmentation\",\r\n    \"startDate\": null,\r\n    \"endDate\":
+    null,\r\n    \"metadata\": null,\r\n    \"audience\": null,\r\n    \"kpi\": null,\r\n   
+    \"createdAt\": \"2021-02-07T12:51:41Z\",\r\n    \"updatedAt\": \"2021-02-07T17:03:38Z\"\r\n 
+    },\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
+    \"environmentId\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n    \"configId\":
+    \"193d8bfb-29cc-42ff-bdd6-a8dd5d84ad7b\",\r\n    \"name\": \"Ads - More Frequent\",\r\n   
+    \"enabled\": true,\r\n    \"condition\": \"user.configName == 'Ads' && user.configSegment
+    == \\\"Frequent\\\"\",\r\n    \"rolloutPercentage\": 100,\r\n    \"value\": [\r\n     
+    {\r\n        \"metadata\": {\r\n          \"entityId\": \"52978a3f-c9f2-45b2-a625-1e96653a592b\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"adCooldownSeconds\",\r\n         
+    \"type\": \"int\",\r\n          \"value\": 60\r\n        }\r\n      }\r\n   
+    ],\r\n    \"id\": \"9ddfee50-bb43-4365-aa93-89c949beca44\",\r\n    \"priority\":
+    800,\r\n    \"type\": \"segmentation\",\r\n    \"startDate\": null,\r\n    \"endDate\":
+    null,\r\n    \"metadata\": null,\r\n    \"audience\": null,\r\n    \"kpi\": null,\r\n   
+    \"createdAt\": \"2021-02-07T13:17:02Z\",\r\n    \"updatedAt\": \"2021-02-07T17:15:02Z\"\r\n 
+    },\r\n  {\r\n    \"projectId\": \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n   
+    \"environmentId\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n    \"configId\":
+    \"193d8bfb-29cc-42ff-bdd6-a8dd5d84ad7b\",\r\n    \"name\": \"Store - Starter
+    Bundle - UK\",\r\n    \"enabled\": true,\r\n    \"condition\": \"user.configName
+    == 'Store' && user.configSegment == 'Starter Bundle' && unity.country == 'GB'\",\r\n   
+    \"rolloutPercentage\": 100,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemName\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"Roast Beef & Yorksire Puddings\"\r\n       
+    }\r\n      },\r\n      {\r\n        \"metadata\": {\r\n          \"entityId\":
+    \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n        },\r\n        \"rs\": {\r\n         
+    \"key\": \"itemType\",\r\n          \"type\": \"string\",\r\n          \"value\":
+    \"Food\"\r\n        }\r\n      },\r\n      {\r\n        \"metadata\": {\r\n         
+    \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n        },\r\n       
+    \"rs\": {\r\n          \"key\": \"itemAmount\",\r\n          \"type\": \"int\",\r\n         
+    \"value\": 1\r\n        }\r\n      }\r\n    ],\r\n    \"id\": \"347c656f-233f-4f52-9c8e-35c1edaa49b0\",\r\n   
+    \"priority\": 1000,\r\n    \"type\": \"segmentation\",\r\n    \"startDate\":
+    null,\r\n    \"endDate\": null,\r\n    \"metadata\": null,\r\n    \"audience\":
+    null,\r\n    \"kpi\": null,\r\n    \"createdAt\": \"2021-02-07T21:37:32Z\",\r\n   
+    \"updatedAt\": \"2021-02-07T21:47:21Z\"\r\n  },\r\n  {\r\n    \"projectId\":
+    \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n    \"environmentId\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n   
+    \"configId\": \"193d8bfb-29cc-42ff-bdd6-a8dd5d84ad7b\",\r\n    \"name\": \"Store
+    - Starter Bundle - US\",\r\n    \"enabled\": true,\r\n    \"condition\": \"user.configName
+    == 'Store' && user.configSegment == 'Starter Bundle' && unity.country == 'US'\",\r\n   
+    \"rolloutPercentage\": 100,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemName\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"New York Deli Pastrami Sandwich\"\r\n       
+    }\r\n      },\r\n      {\r\n        \"metadata\": {\r\n          \"entityId\":
+    \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n        },\r\n        \"rs\": {\r\n         
+    \"key\": \"itemType\",\r\n          \"type\": \"string\",\r\n          \"value\":
+    \"Food\"\r\n        }\r\n      },\r\n      {\r\n        \"metadata\": {\r\n         
+    \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n        },\r\n       
+    \"rs\": {\r\n          \"key\": \"itemAmount\",\r\n          \"type\": \"int\",\r\n         
+    \"value\": 1\r\n        }\r\n      }\r\n    ],\r\n    \"id\": \"108f51cd-03e0-4682-9c71-22233c44d8b1\",\r\n   
+    \"priority\": 1000,\r\n    \"type\": \"segmentation\",\r\n    \"startDate\":
+    null,\r\n    \"endDate\": null,\r\n    \"metadata\": null,\r\n    \"audience\":
+    null,\r\n    \"kpi\": null,\r\n    \"createdAt\": \"2021-02-07T21:47:43Z\",\r\n   
+    \"updatedAt\": \"2021-02-07T21:51:00Z\"\r\n  },\r\n  {\r\n    \"projectId\":
+    \"3a52c8c1-5fe7-4ac9-9b37-27ac63b57dd6\",\r\n    \"environmentId\": \"f623068d-b480-4b38-addf-1259bc20c0fa\",\r\n   
+    \"configId\": \"193d8bfb-29cc-42ff-bdd6-a8dd5d84ad7b\",\r\n    \"name\": \"Store
+    - Starter Bundle - CA\",\r\n    \"enabled\": true,\r\n    \"condition\": \"user.configName
+    == 'Store' && user.configSegment == 'Starter Bundle' && unity.country == 'CA'\",\r\n   
+    \"rolloutPercentage\": 100,\r\n    \"value\": [\r\n      {\r\n        \"metadata\":
+    {\r\n          \"entityId\": \"147d77cc-e6a2-4f2c-b3dd-b973a00ecf52\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemName\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"Pancakes and Maple Syrup\"\r\n        }\r\n     
+    },\r\n      {\r\n        \"metadata\": {\r\n          \"entityId\": \"791cb83a-2b56-4bf7-bbff-fdc0cafcfa5f\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemType\",\r\n          \"type\":
+    \"string\",\r\n          \"value\": \"Food\"\r\n        }\r\n      },\r\n     
+    {\r\n        \"metadata\": {\r\n          \"entityId\": \"a820b5b2-1913-4612-a7e8-1c280c4c1a16\"\r\n       
+    },\r\n        \"rs\": {\r\n          \"key\": \"itemAmount\",\r\n          \"type\":
+    \"int\",\r\n          \"value\": 1\r\n        }\r\n      }\r\n    ],\r\n    \"id\":
+    \"1ed7efae-3f97-4f4d-8cd2-6d02ccc10088\",\r\n    \"priority\": 1000,\r\n    \"type\":
+    \"segmentation\",\r\n    \"startDate\": null,\r\n    \"endDate\": null,\r\n   
+    \"metadata\": null,\r\n    \"audience\": null,\r\n    \"kpi\": null,\r\n    \"createdAt\":
+    \"2021-02-07T21:50:47Z\",\r\n    \"updatedAt\": \"2021-02-07T21:51:55Z\"\r\n 
+    }\r\n]"
